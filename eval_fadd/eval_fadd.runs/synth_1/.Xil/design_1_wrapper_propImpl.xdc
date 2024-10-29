@@ -1,0 +1,5 @@
+set_property SRC_FILE_INFO {cfile:C:/Users/mhaya/fadd_archive/eval_fadd/eval_fadd/eval_fadd.srcs/constrs_1/new/arty.xdc rfile:../../../eval_fadd.srcs/constrs_1/new/arty.xdc id:1} [current_design]
+set_property src_info {type:XDC file:1 line:1 export:INPUT save:INPUT read:READ} [current_design]
+set_property -dict { PACKAGE_PIN H5    IOSTANDARD LVCMOS33 } [get_ports { led0 }]; #IO_L24N_T3_35 Sch=led[4]
+set_property src_info {type:XDC file:1 line:3 export:INPUT save:INPUT read:READ} [current_design]
+set_property -dict { PACKAGE_PIN J5 IOSTANDARD LVCMOS33 } [get_ports { led1 }]; #IO_25_35 Sch=led[5]

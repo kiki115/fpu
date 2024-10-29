@@ -1,0 +1,4 @@
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/mhaya/fadd_archive/eval_fadd/fadd.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fadd
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/mhaya/Downloads/test_fadd/test_fadd.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module test_fadd
