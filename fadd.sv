@@ -1,4 +1,5 @@
 `default_nettype none
+/* verilator lint_off MULTITOP */
 // hi
 module fadd (input wire [31:0]  x1,
              input wire [31:0]  x2,
@@ -104,18 +105,20 @@ module fadd (input wire [31:0]  x1,
                   
    wire [26:0] myf;
    assign myf = myd<<se;
+   wire [7:0] eyf;
+   assign eyf = eyd - se;
    
    wire [24:0] myr;
    assign myr = (myf[1]==1)? myf[26:2] + 25'b1: myf[26:2];
 
    wire [7:0] eyri;
-   assign eyri = eyd +8'b1;
+   assign eyri = eyf +8'b1;
    
    wire [7:0] ey;
    wire [22:0] my;
    wire [7:0] tmp3;
    wire [22:0] tmp4;
-   assign tmp3= myr[23:0]==24'b0 ? 8'b0:eyd;
+   assign tmp3= myr[23:0]==24'b0 ? 8'b0:eyf;
    assign ey = (myr[24]==1) ? eyri:tmp3;
    assign my = myr[22:0];
 
@@ -127,12 +130,12 @@ module fsub (input wire [31:0]  x1,
              input wire [31:0]  x2,
              output wire [31:0] y);
    
-   wire [31:0] assign minus_x2;
+   wire [31:0] minus_x2;
    wire s_minus_x2;
    assign s_minus_x2 = (x2[31]==0) ? 1:0;
-   assign minus_x2 = {s_minus_x2,x2[31:0]};
+   assign minus_x2 = {s_minus_x2,x2[30:0]};
    
-   assign y = fadd(x1,minus_x2);
+   fadd faddd(x1,minus_x2,y);
 
 endmodule
 
@@ -143,30 +146,32 @@ module fmul  (input wire [31:0]  x1,
    wire [7:0] e1;
    wire  s2;
    wire [7:0] e2;  
-   wire h1 [12:0];
-   wire h2 [12:0];
-   wire l1 [10:0];
-   wire l2 [10:0];
-   assign h1[12] = 1;
-   assign h2[12] = 1;
-   assign {s1, e1, h1[11:0], l1} = x1;
-   assign {s2, e2, h2[11:0], l2} = x2;
+   wire [12:0] h1;
+   wire [12:0] h2;
+   wire [11:0] h1_sub;
+   wire [11:0] h2_sub;
+   wire [10:0] l1;
+   wire [10:0] l2;
+   assign {s1, e1, h1_sub, l1} = x1;
+   assign {s2, e2, h2_sub, l2} = x2;
+   assign h1 = {1'b1, h1_sub};
+   assign h2 = {1'b1, h2_sub};
    wire[25:0] hh;
    assign hh = h1 * h2;
    wire[23:0] hl;
    assign hl = h1 * l2;
    wire[23:0] lh;
    assign lh = h2 * l1;
-   wire tmp0 [25:0];
-   assign tmp0 = hh + {13'b0, hl[23:11]} + {13'b0, lh[23:11]} + 26'b2;
-   wire my [22:0];
+   wire [25:0] tmp0;
+   assign tmp0 = hh + {13'b0, hl[23:11]} + {13'b0, lh[23:11]} + 26'd1;
+   wire [22:0] my;
    assign my=(tmp0[25]==1) ? tmp0[24:2]:tmp0[23:1];
    wire sy;
    assign sy = s1 ^ s2;
-   wire ey;
-   assign ey = e1 + e2;
+   wire [7:0] ey;
+   assign ey = e1 + e2 -127;
 
-   assign y = {sy, ey my};
+   assign y = {sy, ey, my};
    
 endmodule
 
