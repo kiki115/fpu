@@ -1,0 +1,13 @@
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/gakka/3A/cpuex2024/FPU/Cache/design/cache.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module cache
+WARNING: [VRFC 10-3380] identifier 'prev_req_addr' is used before its declaration [C:/gakka/3A/cpuex2024/FPU/Cache/design/cache.sv:92]
+WARNING: [VRFC 10-3380] identifier 'prev_req_addr' is used before its declaration [C:/gakka/3A/cpuex2024/FPU/Cache/design/cache.sv:93]
+WARNING: [VRFC 10-3380] identifier 'prev_req_addr' is used before its declaration [C:/gakka/3A/cpuex2024/FPU/Cache/design/cache.sv:94]
+WARNING: [VRFC 10-3380] identifier 'prev_req_addr' is used before its declaration [C:/gakka/3A/cpuex2024/FPU/Cache/design/cache.sv:95]
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/gakka/3A/cpuex2024/FPU/Cache/design/dram_buf.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module dram_buf
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/gakka/3A/cpuex2024/FPU/Cache/design/dram_controller.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module dram_controller
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/gakka/3A/cpuex2024/FPU/Cache/design/master_fifo_slave.sv" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/gakka/3A/cpuex2024/FPU/Cache/simulation/tb.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module tb
